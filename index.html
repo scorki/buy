@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>蠍瓜商店</title>
+<style>
+  :root{--green:#27684b;--ink:#20372d;--line:#e3e8e1;--bg:#f6f8f4}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+  header{background:var(--green);color:#fff;padding:18px 24px;font-size:1.4rem;font-weight:700}
+  main{max-width:960px;margin:24px auto;padding:0 16px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px}
+  .icon{font-size:3rem;text-align:center}
+  h3{margin:8px 0 4px}
+  .price{font-weight:700;color:var(--green);margin-bottom:10px}
+  .buy{display:block;padding:9px;border-radius:6px;background:var(--green);color:#fff;font-weight:700;text-align:center;text-decoration:none}
+  .buy:hover{opacity:.9}
+  footer{text-align:center;color:#718078;font-size:.85rem;margin:24px 0}
+</style>
+</head>
+<body>
+<header>🦂🥒 蠍瓜商店</header>
+<main>
+  <div class="grid" id="products"></div>
+</main>
+<footer>點選「PayPal 立即購買」後會在新分頁開啟 PayPal 付款頁。</footer>
+<script>
+const PRODUCTS = [
+  {name: "煙火64x", icon: "🧨", price: 1, link: "https://www.paypal.com/ncp/payment/9K32BTBNGL5Q6"},
+  {name: "煙火640x", icon: "🧨", price: 8, link: "https://www.paypal.com/ncp/payment/4TZ59UJTKVWEU"},
+  {name: "煙火6400x", icon: "🧨", price: 60, link: "https://www.paypal.com/ncp/payment/DA3ZDTVMXTQTG"},
+  {name: "界符殼1x", icon: "🐚", price: 20, link: "https://www.paypal.com/ncp/payment/2JWUMVKCDM4BN"}
+];
+
+document.getElementById("products").innerHTML = PRODUCTS.map(p =>
+  `<div class="card"><div class="icon">${p.icon}</div><h3>${p.name}</h3>
+   <div class="price">NT$${p.price}</div>
+   <a class="buy" href="${p.link}" target="_blank" rel="noopener">PayPal 立即購買</a></div>`).join("");
+</script>
+</body>
+</html>
